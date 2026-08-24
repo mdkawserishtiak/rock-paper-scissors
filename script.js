@@ -1,3 +1,7 @@
+const tries = 5;
+let humanScore = 0;
+let computerScore = 0;
+
 const getComputerChoice = () => {
   const randomNumber = Math.floor(Math.random() * 3 + 1);
 
@@ -13,9 +17,6 @@ const getComputerChoice = () => {
 const getHumanChoice = () => {
   return prompt("What is your choice: (Rock, Paper, Scissors)");
 };
-
-let humanScore = 0;
-let computerScore = 0;
 
 const playRound = (humanChoice, computerChoice) => {
   humanChoice = humanChoice.toLowerCase();
@@ -48,3 +49,20 @@ const playRound = (humanChoice, computerChoice) => {
     humanScore++;
   }
 };
+
+const playGame = () => {
+  for (let i = 0; i < tries; i++) {
+    playRound(getHumanChoice(), getComputerChoice());
+    TimeRanges.sle
+  }
+
+  if (humanScore > computerScore) {
+    console.log("You won the game finally!");
+  } else {
+    console.log("You lose the game. Better luck next time.");
+  }
+
+  console.log(`Score: ${humanScore} - ${computerScore}`);
+};
+
+playGame();
