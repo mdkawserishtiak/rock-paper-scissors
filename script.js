@@ -9,3 +9,7 @@ const getComputerChoice = () => {
     return "scissors";
   }
 };
+
+const getHumanChoice = () => {
+  return prompt("What is your choice: (Rock, Paper, Scissors)");
+};
