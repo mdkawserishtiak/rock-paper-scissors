@@ -14,9 +14,9 @@ const getComputerChoice = () => {
   }
 };
 
-const getHumanChoice = () => {
-  return prompt("What is your choice: (Rock, Paper, Scissors)");
-};
+// const getHumanChoice = () => {
+//   return prompt("What is your choice: (Rock, Paper, Scissors)");
+// };
 
 const playRound = (humanChoice, computerChoice) => {
   humanChoice = humanChoice.toLowerCase();
@@ -50,22 +50,29 @@ const playRound = (humanChoice, computerChoice) => {
   }
 };
 
-const playGame = () => {
+const playGame = (humanChoice) => {
   // for (let i = 0; i < tries; i++) {
   //   playRound(getHumanChoice(), getComputerChoice());
   // }
 
-  while (humanScore !== MAX_SCORE && computerScore !== MAX_SCORE) {
-    playRound(getHumanChoice(), getComputerChoice());
-  }
-
-  if (humanScore > computerScore) {
-    console.log("You won the game finally!");
+  if (humanScore !== MAX_SCORE && computerScore !== MAX_SCORE) {
+    playRound(humanChoice, getComputerChoice());
   } else {
-    console.log("You lose the game. Better luck next time.");
-  }
+    if (humanScore > computerScore) {
+      console.log("You won the game finally!");
+    } else {
+      console.log("You lose the game. Better luck next time.");
+    }
 
-  console.log(`Score: ${humanScore} - ${computerScore}`);
+    console.log(`Score: ${humanScore} - ${computerScore}`);
+    humanScore = 0;
+    computerScore = 0;
+  }
 };
 
-playGame();
+const buttons = document.querySelector("#buttons");
+
+buttons.addEventListener("click", (event) => {
+  playGame(event.target.textContent);
+  // console.log(event.target.textContent);
+});
