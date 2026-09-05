@@ -14,57 +14,56 @@ const getComputerChoice = () => {
   }
 };
 
-// const getHumanChoice = () => {
-//   return prompt("What is your choice: (Rock, Paper, Scissors)");
-// };
+const showResult = (result) => {
+  const resultBox = document.querySelector("#result");
+  resultBox.textContent = result;
+};
 
 const playRound = (humanChoice, computerChoice) => {
   humanChoice = humanChoice.toLowerCase();
 
   if (humanChoice === computerChoice) {
-    console.log("Tie!");
+    showResult("Tie!");
   } else if (humanChoice === "rock" && computerChoice === "paper") {
-    console.log("You lose! Paper beats Rock");
+    showResult("You lose! Paper beats Rock");
 
     computerScore++;
   } else if (humanChoice === "paper" && computerChoice === "scissors") {
-    console.log("You lose! Scissors beats Paper");
+    showResult("You lose! Scissors beats Paper");
 
     computerScore++;
   } else if (humanChoice === "scissors" && computerChoice === "rock") {
-    console.log("You lose! Rock beats Scissors");
+    showResult("You lose! Rock beats Scissors");
 
     computerScore++;
   } else if (humanChoice === "rock" && computerChoice === "scissors") {
-    console.log("You won! Rock beats Scissors");
+    showResult("You won! Rock beats Scissors");
 
     humanScore++;
   } else if (humanChoice === "paper" && computerChoice === "rock") {
-    console.log("You won! Paper beats rock");
+    showResult("You won! Paper beats rock");
 
     humanScore++;
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
-    console.log("You won! Scissors beats Paper");
+    showResult("You won! Scissors beats Paper");
 
     humanScore++;
   }
 };
 
 const playGame = (humanChoice) => {
-  // for (let i = 0; i < tries; i++) {
-  //   playRound(getHumanChoice(), getComputerChoice());
-  // }
-
   if (humanScore !== MAX_SCORE && computerScore !== MAX_SCORE) {
     playRound(humanChoice, getComputerChoice());
   } else {
     if (humanScore > computerScore) {
-      console.log("You won the game finally!");
+      showResult(
+        `You won the game finally! Score: ${humanScore} - ${computerScore}`,
+      );
     } else {
-      console.log("You lose the game. Better luck next time.");
+      showResult(
+        `You lose the game. Better luck next time. Score: ${humanScore} - ${computerScore}`,
+      );
     }
-
-    console.log(`Score: ${humanScore} - ${computerScore}`);
     humanScore = 0;
     computerScore = 0;
   }
@@ -74,5 +73,4 @@ const buttons = document.querySelector("#buttons");
 
 buttons.addEventListener("click", (event) => {
   playGame(event.target.textContent);
-  // console.log(event.target.textContent);
 });
