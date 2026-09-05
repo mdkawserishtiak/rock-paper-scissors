@@ -53,7 +53,6 @@ const playRound = (humanChoice, computerChoice) => {
 const playGame = () => {
   for (let i = 0; i < tries; i++) {
     playRound(getHumanChoice(), getComputerChoice());
-    TimeRanges.sle
   }
 
   if (humanScore > computerScore) {
