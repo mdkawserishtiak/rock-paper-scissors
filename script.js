@@ -1,4 +1,4 @@
-const tries = 5;
+const MAX_SCORE = 5;
 let humanScore = 0;
 let computerScore = 0;
 
@@ -51,7 +51,11 @@ const playRound = (humanChoice, computerChoice) => {
 };
 
 const playGame = () => {
-  for (let i = 0; i < tries; i++) {
+  // for (let i = 0; i < tries; i++) {
+  //   playRound(getHumanChoice(), getComputerChoice());
+  // }
+
+  while (humanScore !== MAX_SCORE && computerScore !== MAX_SCORE) {
     playRound(getHumanChoice(), getComputerChoice());
   }
 
